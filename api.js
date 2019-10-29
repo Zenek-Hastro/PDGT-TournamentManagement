@@ -53,6 +53,30 @@ app.get('/login', function(req,res){
      }
  });
 
+//Returns the number of items in the database
+app.get('/tournament/players/number/', function(req, res){
+  
+  const url='https://quickstart-1565185583126.firebaseio.com/.json'; 
+  var myObj; 
+    
+  //Open the connection with Firebase
+  Http.open("GET", url);
+  Http.send();
+  
+  var n;
+  Http.onreadystatechange = async function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = await JSON.parse(this.responseText);
+        if (myObj == undefined)
+          n = 0;
+        else
+          n = await myObj.length; 
+      res.send(JSON.stringify(n));
+        
+    }; 
+  };  
+  
+})
 
 
 //Returns all data in Firebase
