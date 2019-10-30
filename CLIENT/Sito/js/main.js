@@ -3,15 +3,7 @@ var url;
 var contatoretasti = 0;
 
 async function Check() {
-    document.modulo.name.value = ""; 
-    document.modulo.surname.value = "";
-    document.modulo.data.value = "";
-    document.modulo.luogo.value = ""; 
-    document.modulo.residenza.value = ""; 
-    document.modulo.cf.value = ""; 
-    document.modulo.cell.value = ""; 
-    document.modulo.mail.value = "";
-    document.modulo.teamname.value = ""; 
+   
 
     // Variabili associate ai campi del modulo
     var name = document.modulo.name.value;
@@ -148,8 +140,10 @@ function sendPost() {
                         alert("Atleta con questo codice fiscale già presente");
                         return;
                     }
-                    wind
+                    window.location.href = 'ins_baller2.html';
                 }
+                else
+                    return;
             };
         }
         else {
