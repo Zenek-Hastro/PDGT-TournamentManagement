@@ -42,7 +42,7 @@ L'API sviluppata ha diversi metodi:
 - `/tournament/players/`: metodo **DELETE**, rimuove l'iscritto presente all'ID-esimo posto nel database, considerando l'ID passatogli come parametro della richiesta;
 
 
-Una lista di metodi per poter essere testati, lo schema dell'API e ulteriori informazioni su di essi, sono resi disponibili, grazi al tool *Swagger * a questo indirizzo: 
+Una lista di metodi per poter essere testati, lo schema dell'API e ulteriori informazioni su di essi, sono resi disponibili, grazi al tool *Swagger* a questo indirizzo: 
 [Schema API.](https://app.swaggerhub.com/apis-docs/nicosanti98/API/1.0 "Schema API.")
 
 
