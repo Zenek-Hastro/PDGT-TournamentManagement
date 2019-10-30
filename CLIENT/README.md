@@ -35,6 +35,7 @@ Il sito è composto da diverse pagine. La pagina che fa riferimento all'API cont
 
 Il sito richiama l'API per sapere a che ID va inserito il nuovo iscritto, per poi effettuare una richiesta POST al server inserendo quindi i dati nel database. L'autenticazione viene mascherata dallo sviluppatore inserendo le credenziali codificate nel codice, quest'ultimo non visibile dal sito, ma scritto in un file esterno.
 
+![Screenshot Sito](https://github.com/nicosanti98/PDGT-TournamentManagement/blob/master/img/testclients.png "Screenshot Sito")
 
 
 -----------
