@@ -2,7 +2,6 @@
 ##### Sviluppatore: 
 Nicolò Santini, mat. 292404
 
-[========]
 ### Obiettivi:
 L'obiettivo principale del Web Service sviluppato è quello di semplificare la gestione dei dati anagrafici degli atleti iscritti ad un organizzatore di tornei sportivi.
 Nello specifico, l'api si compone di 5 funzioni principali, che permettono di:
@@ -27,4 +26,22 @@ L'architettura è implementata come nello schema descritto dall'immagine qua sop
 
 I dati interscambiati tra le varie componenti dell'architettura sono scambiati in formato *JSON*. Le richieste di connessione al sever e a Firebase sono implementate facendo delle richieste Http utilizzando, sia per il server, che per i client, la libreria XMLHttpRequest. 
 
+*Alcune funzioni, come descritto in seguito, sono utilizzabili solo previa autenticazione. Non è supportata la registrazione automatica, pertanto le credenziali di accesso devono essere create dallo sviluppatore.*
+
 ------------
+###Tournament Management API
+L'API sviluppata ha diversi metodi:
+
+- `/info`: metodo **GET**, ritorna alcune info dell'API
+- `/login`: metodo **GET**, ritorna 200 se l'utente è autenticato, 401 in caso contrario;
+- `/tournament/players/number`: metodo **GET**, ritorna il numero di iscritti presenti nel database;
+- `/tournament/players`: metodo **GET**, ritorna l'intera lista di iscritti presenti nel database;
+- `/tournament/players/searchbyname`: metodo **GET**, ritorna il/gli iscritto/i con il cognome corrispondente a quello passato alla richiesta come parametro;
+- `/tournament/players/searchbyteam`: metodo **GET**, ritorna il/gli iscritto/i con il nome della squadra corrispondente a quello passato alla richiesta come parametro;
+- `/tournament/players/`: metodo **POST**, permette l'inserimento di un nuovo iscritto inserendo nel database i dati anagrafici passati per parametri alla richiesta;
+- `/tournament/players/`: metodo **DELETE**, rimuove l'iscritto presente all'ID-esimo posto nel database, considerando l'ID passatogli come parametro della richiesta;
+
+
+Una lista di metodi per poter essere testati, lo schema dell'API e ulteriori informazioni su di essi, sono resi disponibili, grazi al tool *Swagger * a questo indirizzo: 
+[Schema API.](https://app.swaggerhub.com/apis-docs/nicosanti98/API/1.0 "Schema API.")
+
