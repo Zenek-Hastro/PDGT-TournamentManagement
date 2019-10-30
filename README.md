@@ -16,8 +16,7 @@ Per apprezzare al meglio le funzioni fornite, è stato necessario sviluppare anc
 La documentazione e il README delle applicazioni client sono disponibili [qui](https://github.com/nicosanti98/PDGT-TournamentManagement/blob/master/CLIENT/README.md "qui").
 
 ------------
-#Relazione
 
 
-#### Architettura e scelte implementative
+## Architettura e scelte implementative
 ![Architettura Servizio](https://github.com/nicosanti98/PDGT-TournamentManagement/blob/master/img/apistruct.png "Architettura Servizio")
