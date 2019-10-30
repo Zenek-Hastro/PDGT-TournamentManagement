@@ -29,7 +29,7 @@ I dati interscambiati tra le varie componenti dell'architettura sono scambiati i
 *Alcune funzioni, come descritto in seguito, sono utilizzabili solo previa autenticazione. Non è supportata la registrazione automatica, pertanto le credenziali di accesso devono essere create dallo sviluppatore.*
 
 ------------
-## Tournament Management API
+### Tournament Management API
 L'API sviluppata ha diversi metodi:
 
 - `/info`: metodo **GET**, ritorna alcune info dell'API
@@ -45,3 +45,21 @@ L'API sviluppata ha diversi metodi:
 Una lista di metodi per poter essere testati, lo schema dell'API e ulteriori informazioni su di essi, sono resi disponibili, grazi al tool *Swagger * a questo indirizzo: 
 [Schema API.](https://app.swaggerhub.com/apis-docs/nicosanti98/API/1.0 "Schema API.")
 
+
+###### N.B. Il README delle applicazioni Client è disponibile a questo indirizzo: [LINK](https://github.com/nicosanti98/PDGT-TournamentManagement/blob/master/CLIENT/README.md "LINK")
+
+-----------
+
+### Servizi Esterni utlizzati
+Si fa uso inoltre di API esterne, nello specifico vengono invocate le funzioni fornite da Google per interagire con il suo servizio Firebase e poter quindi manipolare i dati.
+Nello specifico vengono utilizzati i dati di configurazione del database per poter collegare quest'ultimo al server e nel codice vengono usate le query fornite da Firebase per poter filtrare, ordinare e recuperare dati degli atleti contenenti in un certo figlio un certo valore.
+
+------------
+
+### Messa online del servizio
+Il server è hostato su Heroku: ogni volta che si esegue un commit su GitHub, Heroku esegue un Deploy automatico, permettendo di avere un server sempre attivo in *Continuos Delivery*.
+Il link al server è qui disponibile: [LINK](https://tournament-manage.herokuapp.com/ "LINK").
+
+Per testare il funzionamento dei metodi dell'API basta sostituire dopo l'URL del server, la path del metodo corrispondente.
+
+------------
