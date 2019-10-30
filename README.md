@@ -29,7 +29,7 @@ I dati interscambiati tra le varie componenti dell'architettura sono scambiati i
 *Alcune funzioni, come descritto in seguito, sono utilizzabili solo previa autenticazione. Non è supportata la registrazione automatica, pertanto le credenziali di accesso devono essere create dallo sviluppatore.*
 
 ------------
-###Tournament Management API
+## Tournament Management API
 L'API sviluppata ha diversi metodi:
 
 - `/info`: metodo **GET**, ritorna alcune info dell'API
