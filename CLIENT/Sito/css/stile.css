@@ -1,0 +1,103 @@
+@charset "UTF-8";
+@import url("media_screen.css") screen;
+
+html, body, #container {
+	height: 100%;
+	clear: both;
+}
+
+
+body{
+	font-family: 'Archivo', sans-serif;
+	background-color: white; /*withesmoke*/
+	margin:0;
+	padding: 0;
+	text-align: center;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.globalnav {
+	background-color: transparent;
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	width:100%;
+	height: 44px;
+	padding-bottom: 20px;
+
+}
+
+.globalnav li {
+	display:inline-block;
+ 	padding: 10px;
+	height: 100%;
+
+
+}
+
+img{draggable: false}
+
+
+a:link, a:visited{
+	color:whitesmoke;
+	text-decoration: none;
+}
+
+a:hover, a:active{
+	color: gray;
+	text-decoration: none;
+}
+
+
+#logohome {
+    text-align: center;
+    width: 50%;
+    padding: 10px;
+	margin:30px;
+
+
+}
+
+header{
+	background-color:black;
+}
+
+footer{
+	text-align: center;
+	color: white;
+	padding:20px;
+	clear: both;
+	float: left;
+	width:100%;
+}
+
+
+
+.logocontatti{
+	width: 200px;
+	padding: 20px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+
+#facebookico{
+	filter: saturate(0%); -webkit-filter: saturate(0%);
+}
+#facebookico:hover{
+	filter: saturate(100%); -webkit-filter: saturate(100%);
+}
+#instagramico{
+	filter: saturate(0%); -webkit-filter: saturate(0%);
+}
+#instagramico:hover{
+	filter: saturate(100%); -webkit-filter: saturate(100%);
+}
