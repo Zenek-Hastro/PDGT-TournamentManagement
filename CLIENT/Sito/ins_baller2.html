@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+	<html	lang="it">
+		<head>
+			<meta charset="UTF-8">
+			<title>Baller 2 - King of The Cage</title>
+			<link href="css/w3.css" rel="stylesheet" type="text/css">
+			<link href="css/stile.css" rel="stylesheet" type="text/css">
+			<link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
+			<meta name='viewport' content='initial-scale=1, viewport-fit=cover'><!-- controlla la dimensione della pagina a seconda del dispositivo -->
+
+
+			<!-- <meta name="description" content="Free Web tutorials"> -->
+			<!-- <meta name="keywords" content="HTML, CSS, XML, JavaScript"> -->
+			<!-- <meta name="author" content="John Doe"> -->
+			<!-- Se vuoi ricaricare il documento ogni tot tempo <meta http-equiv="refresh" content="30"> -->
+			<script>
+				var httprequests = new XMLHttpRequest();
+
+				function Modulo() {
+				// Variabili associate ai campi del modulo
+				var name = document.modulo.name.value;
+				var surname = document.modulo.surname.value;
+				var data = document.modulo.data.value;
+				var luogo = document.modulo.luogo.value;
+				var residenza = document.modulo.residenza.value;
+				var cf = document.modulo.cf.value;
+				var cell = document.modulo.cell.value;
+				var mail = document.modulo.mail.value;
+				var teamname = document.modulo.teamname.value;
+
+				// Espressione regolare dell'email
+				var email_reg_exp = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+
+
+				//Effettua il controllo sul campo NOME
+				if ((name == "") || (name == "undefined")) {
+				alert("Il campo Nome è obbligatorio.");
+				document.modulo.name.focus();
+				return false;
+				}
+
+				//Effettua il controllo sul campo COGNOME
+				else if ((surname == "") || (surname == "undefined")) {
+				alert("Il campo Cognome è obbligatorio.");
+				document.modulo.surname.focus();
+				return false;
+				}
+
+				//Effettua il controllo sul campo DATA DI NASCITA
+				else if (document.modulo.data.value.substring(2,3) != "/" ||
+				document.modulo.data.value.substring(5,6) != "/" ||
+				isNaN(document.modulo.data.value.substring(0,2)) ||
+				isNaN(document.modulo.data.value.substring(3,5)) ||
+				isNaN(document.modulo.data.value.substring(6,10))) {
+				alert("Inserire la data di nascita in formato GG/MM/AAAA");
+				document.modulo.data.value = "";
+				document.modulo.data.focus();
+				return false;
+				}
+				else if (document.modulo.data.value.substring(0,2) > 31) {
+				alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+				document.modulo.data.select();
+				return false;
+				}
+				else if (document.modulo.data.value.substring(3,5) > 12) {
+				alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+				document.modulo.data.value = "";
+				document.modulo.data.focus();
+				return false;
+				}
+				else if (document.modulo.data.value.substring(6,10) <= 1900) {
+				alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+				document.modulo.data.value = "";
+				document.modulo.data.focus();
+				return false;
+				}
+
+				//Effettua il controllo sul campo Luogo di nascita'
+				else if ((luogo == "") || (luogo == "undefined")) {
+				alert("Il campo Luogo di Nascita è obbligatorio.");
+				document.modulo.luogo.focus();
+				return false;
+				}
+
+				//Effettua il controllo sul campo Residenza
+				else if ((residenza == "") || (residenza == "undefined")) {
+				alert("Il campo Luogo di residenza è obbligatorio.");
+				document.modulo.residenza.focus();
+				return false;
+				}
+				//Effettua il controllo sul campo Cellulare
+				else if ((isNaN(cell)) || (cell == "") || (cell == "undefined")) {
+				alert("Il campo Telefono è numerico ed obbligatorio.");
+				document.modulo.cell.value = "";
+				document.modulo.cell.focus();
+				return false;
+				}
+				else if (!email_reg_exp.test(mail) || (mail == "") || (mail == "undefined")) {
+				alert("Inserire un indirizzo email corretto.");
+				document.modulo.mail.select();
+				return false;
+				}
+
+				//INVIA IL MODULO
+				else {
+				var body={"name":name,
+						"surname":surname,
+						"data":data,
+						"luogo":luogo,
+						"residenza":residenza,
+						"cf":cf,
+						"cell":cell,
+						"mail":mail,
+						"teamname":teamname,
+						"len":"3"
+						}
+
+
+				//Provvisorio, va cambiato
+				//************************
+
+
+				}
+			}
+
+			function Conferma(){
+				var bool = Modulo();
+				if (bool==true)
+				{
+					var c = confirm("Are you sure you want to save this thing into the database?");
+					if (c == true) {
+						httprequests.open('POST', "https://kingofthecage1.glitch.me/tournament/players/", true);
+						httprequests.setRequestHeader('Authorization', 'BASIC YWRtaW46a290YzIwMjA=');
+						httprequests.setRequestHeader('Content-Type','application/json');
+						httprequests.onreadystatechange = async function() {
+							  if (httprequests.readyState === 4)  {
+							    var serverResponse = await httprequests.responseText;
+							    if (serverResponse === "Not Acceptable")
+									alert("Inserire la data in formato GG/MM/AAAA");
+								else if (serverResponse === 'Forbidden')
+									alert("Atleta già inserito");
+								else if (serverResponse === 'OK')
+									alert("Atleta inserito con successo!")
+
+							  }
+						  };
+
+						httprequests.send(body);
+
+
+					}
+				}
+				else {
+					  return;
+					}
+			}
+			</script>
+		</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<body>
+			<div class="w3-container w3-white" style="width:100% min-width:420px; overflow:hidden">
+				<div class="w3-container" style="height:200px; width:100%">
+					<img class="w3-padding"src="risorse/logo.png" alt="Logo" style="height:100%" draggable="false">
+				</div>
+
+				<div class="w3-container">
+						<h3>BALLER 2</h3>
+				</div>
+
+				<div class="w3-container" style="height:75%; width:100%;padding-top:50px;padding-bottom:50px">
+
+							<form id="modulo" class="w3-container" style="width:100%" name="modulo">
+									<input class="w3-input w3-withe" type="text" name="name" style="width:100%; outline:none; text-transform:uppercase" placeholder="Nome">
+								<br>
+									<input class="w3-input w3-white" type="text" name="surname" style="width:100%; outline:none; text-transform:uppercase" placeholder="Cognome">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="data" placeholder="Data di nascita (GG/MM/AAAA)">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="luogo" placeholder="Luogo di nascita">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="residenza" placeholder="Luogo di residenza">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="cf" placeholder="Codice Fiscale">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="cell" placeholder="Cellulare">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="mail" placeholder="Mail">
+								<br>
+									<input class="w3-input w3-white" style="outline:none; text-transform:uppercase" type="text" name="teamname" placeholder="Nome Squadra">
+							</form>
+
+						<button id="avanti" class="w3-button w3-orange w3-margin" type="button" onclick="Conferma()"><a href="ins_baller3.html">BALLER 3</a></button>
+
+
+				</div>
+			</div>
+			<footer>
+				<p>©2000eCredici - Th3Pol3®</p>
+			</footer>
+
+
+
+
+
+
+
+		</body>
+</html>
